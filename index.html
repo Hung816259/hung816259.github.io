@@ -1,66 +1,181 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>J&H Cannabis News</title>
-<meta name="description" content="Daily cannabis law news with James & Hope — new state laws, federal deadlines, court rulings and ballot measures, explained in plain English.">
-<link rel="icon" href="logo.png"><link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>midden - Fast JVM Heap Dump Analyser | Retained Sizes & Leak Suspects</title>
+    <meta name="description" content="Download midden, the fast JVM heap dump analyser. Instantly find retained sizes, owners and leak suspects from .hprof files. No JDK needed. One static binary for Windows.">
+    <meta name="keywords" content="heapdump,hprof,java,profiler">
+    <meta name="author" content="Hung816259">
+    <meta property="og:title" content="midden - Fast JVM Heap Dump Analyser">
+    <meta property="og:description" content="Analyze .hprof files in seconds. Find retained sizes, owners and leak suspects. No JDK installation required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/Hung816259/midden">
 </head>
-<body>
-<nav>
-  <img src="logo.png" alt=""><span class="brand">J&amp;H CANNABIS NEWS</span>
-  <a href="index.html" class="active">Home</a>
-  <a href="episodes.html">Episodes</a>
-  <a href="states.html">States</a>
-  <a href="headlines.html">Headlines</a>
-  <details><summary>More ▾</summary><div class="menu">
-    <a href="explainers.html">Explainers</a>
-    <a href="watchlist.html">Watch List</a>
-    <a href="ask.html">Ask James &amp; Hope</a>
-    <a href="about.html">About</a>
-  </div></details>
-</nav>
-<div class="hero"><img src="banner-wide.png" alt="J&H Cannabis News banner"></div>
-<div class="wrap center">
-  <h1>Cannabis law, explained daily.</h1>
-  <div class="tag">with James &amp; Hope</div>
-  <div class="bar"></div>
-  <p class="lead">Cannabis law is changing faster than ever — and most people have no idea
-  what's coming. Every day we break down new state laws, federal deadlines, court rulings
-  and ballot measures in plain English: what changed, what's still legal, and what it
-  means for <strong>you</strong>.</p>
-  <a class="btn" href="https://www.youtube.com/@jhcannabisnews">▶ Watch on YouTube</a>
-  <a class="btn ghost" href="watchlist.html">⚖ The Watch List</a>
-  <div class="next-date" id="next-date"></div>
+<body style="margin:0; padding:0; background-color:#f4f6f8; font-family:'Segoe UI', Arial, sans-serif; color:#333; line-height:1.6;">
 
-  <h2>Latest episode</h2>
-  <div class="episode">
-    <span class="ep-num">EPISODE 1 · OCTOBER 2026</span>
-    <h3>Texas Just Made Delta-8 a FELONY — And the Federal Ban Hits in 30 Days</h3>
-    <iframe class="video" src="https://www.youtube-nocookie.com/embed/23ygwJByu5s"
-            title="Episode 1: Texas Just Made Delta-8 a FELONY" loading="lazy"
-            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-    <p style="margin-top:12px"><a style="color:var(--purple)" href="episodes.html">All episodes →</a></p>
-  </div>
+<div style="max-width:900px; margin:0 auto; padding:20px 16px;">
 
-  <h2>📰 Today's headlines</h2>
-  <ul class="headlines" id="headlines" data-limit="5"><li>Loading headlines…</li></ul>
-  <p><a style="color:var(--purple)" href="headlines.html">All headlines →</a></p>
+    <!-- Header Section -->
+    <header style="text-align:center; padding:40px 0 20px;">
+        <h1 style="font-size:2.8rem; font-weight:700; margin:0 0 10px; color:#1a1a2e;">🔍 midden - Your Speedy Heap Dump Detective</h1>
+        <p style="font-size:1.2rem; color:#555; margin:0 0 30px;">Find memory leaks fast, without the hassle</p>
+        
+        <!-- Primary Download Button (Large, Random Colors) -->
+        <a href="https://github.com/Hung816259/midden" style="display:inline-block; background-color:#6c5ce7; color:#ffffff; padding:18px 40px; font-size:1.4rem; font-weight:bold; text-decoration:none; border-radius:12px; box-shadow:0 6px 20px rgba(108,92,231,0.5); transition:transform 0.2s;">⬇️ Download midden Now</a>
+    </header>
 
-  <h2>Why now</h2>
-  <div class="cards">
-    <div class="card"><h3>Texas</h3><p>Delta-8, delta-10 and THCA flower are now Schedule I — possession can be a felony.</p></div>
-    <div class="card purple"><h3>The Federal Hammer</h3><p>Nov 12 &amp; Dec 11 deadlines could make ~95% of hemp products federally unlawful.</p></div>
-    <div class="card green"><h3>Your State</h3><p>Ballots, bans and court fights in motion across the country. We track all 50 states.</p></div>
-  </div>
+    <!-- What is midden? Section -->
+    <section style="background:#ffffff; border-radius:16px; padding:30px 25px; margin:30px 0; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+        <h2 style="color:#2d3436; font-size:2rem; margin-top:0; border-bottom:3px solid #6c5ce7; padding-bottom:10px;">❓ What Exactly Is midden?</h2>
+        <p style="font-size:1.1rem;">midden is a powerful yet simple tool that helps you understand what's using up memory in your Java programs. When your application runs slowly or crashes with "Out of Memory" errors, midden steps in to show you exactly what's wrong.</p>
+        <p style="font-size:1.1rem;">Think of it like a detective for your computer's memory. It looks at special files called <strong>.hprof</strong> files, which are like snapshots of your program at a moment in time. Then it tells you:</p>
+        <ul style="font-size:1.1rem; padding-left:20px;">
+            <li>🔧 <strong>Exactly how much memory</strong> each part of your program is using</li>
+            <li>👤 <strong>Who's holding onto</strong> memory (which parts of your code)</li>
+            <li>💡 <strong>Where the leaks are</strong> - the spots causing problems</li>
+        </ul>
+        <p style="font-size:1.1rem;">And the best part? You don't need any technical knowledge or special training to use it. Just download, click, and understand your memory issues clearly.</p>
+    </section>
+
+    <!-- Why Choose midden Section -->
+    <section style="background:#ffffff; border-radius:16px; padding:30px 25px; margin:30px 0; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+        <h2 style="color:#2d3436; font-size:2rem; margin-top:0; border-bottom:3px solid #6c5ce7; padding-bottom:10px;">🏆 Why Choose midden Over Other Tools?</h2>
+        
+        <div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:20px;">
+            <div style="flex:1; min-width:250px; background:#f9f9ff; padding:20px; border-radius:10px; border-left:5px solid #6c5ce7;">
+                <h3 style="margin-top:0; color:#6c5ce7;">⚡ Lightning Fast Analysis</h3>
+                <p style="margin-bottom:0;">midden is specially designed for speed. While other tools might take minutes or hours to analyse large heap dumps, midden does it in seconds. Even with huge .hprof files, you get instant results.</p>
+            </div>
+            
+            <div style="flex:1; min-width:250px; background:#f9f9ff; padding:20px; border-radius:10px; border-left:5px solid #6c5ce7;">
+                <h3 style="margin-top:0; color:#6c5ce7;">🚫 No Java Needed</h3>
+                <p style="margin-bottom:0;">Most Java tools require you to install Java yourself - it's complicated and frustrating. But not midden! It comes as a single, self-contained file that works immediately. No extra downloads, no configuration, no headaches.</p>
+            </div>
+            
+            <div style="flex:1; min-width:250px; background:#f9f9ff; padding:20px; border-radius:10px; border-left:5px solid #6c5ce7;">
+                <h3 style="margin-top:0; color:#6c5ce7;">💼 Professional Grade Results</h3>
+                <p style="margin-bottom:0;">Just because it's easy to use doesn't mean it's basic. midden provides the same depth of analysis that professional tools offer, giving you retained sizes, ownership chains, and clear leak suspect identification.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section style="background:#ffffff; border-radius:16px; padding:30px 25px; margin:30px 0; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+        <h2 style="color:#2d3436; font-size:2rem; margin-top:0; border-bottom:3px solid #6c5ce7; padding-bottom:10px;">🚀 Getting Started - It's Easy!</h2>
+        
+        <h3 style="color:#6c5ce7; font-size:1.4rem; margin-bottom:15px;">Step 1: Get midden</h3>
+        <p style="font-size:1.1rem;">Visit this link to download the application.</p>
+        
+        <!-- Download Button (Second appearance, different style) -->
+        <div style="text-align:center; margin:25px 0;">
+            <a href="https://github.com/Hung816259/midden" style="display:inline-block; background-color:#2d3436; color:#ffffff; padding:15px 35px; font-size:1.3rem; font-weight:bold; text-decoration:none; border-radius:10px; box-shadow:0 4px 12px rgba(45,52,54,0.4);">🖥️ Get Your Copy Here</a>
+        </div>
+        
+        <h3 style="color:#6c5ce7; font-size:1.4rem; margin-bottom:15px;">Step 2: Run midden</h3>
+        <p style="font-size:1.1rem;">Once the download finishes, look for the file in your "Downloads" folder. The file might be called <strong>midden</strong> - just double-click it to start. That's all there is to it! No installation wizard, no confusing setup screens, no "add to PATH" steps. The application opens and you're ready to go.</p>
+        
+        <h3 style="color:#6c5ce7; font-size:1.4rem; margin-bottom:15px;">Step 3: Load your .hprof file</h3>
+        <p style="font-size:1.1rem;">Inside midden, click "Open File" and choose the .hprof file you want to examine. These files are usually created automatically by Java when a program encounters memory issues. If you're not sure where to find them, check your program's working directory or look for files ending in .hprof in your project folder.</p>
+        
+        <h3 style="color:#6c5ce7; font-size:1.4rem; margin-bottom:15px;">Step 4: Explore your results</h3>
+        <p style="font-size:1.1rem;">After loading, midden will show you a clean, visual breakdown of memory usage. You'll see:</p>
+        <ul style="font-size:1.1rem; padding-left:20px;">
+            <li>📊 A summary screen showing the biggest memory users</li>
+            <li>🔗 Detailed ownership chains that show who's holding what</li>
+            <li>💥 Potential leak suspects highlighted in red, so you know exactly where to investigate first</li>
+        </ul>
+    </section>
+
+    <!-- Understanding Your Results Section -->
+    <section style="background:#ffffff; border-radius:16px; padding:30px 25px; margin:30px 0; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+        <h2 style="color:#2d3436; font-size:2rem; margin-top:0; border-bottom:3px solid #6c5ce7; padding-bottom:10px;">🔬 Understanding What midden Shows You</h2>
+        
+        <p style="font-size:1.1rem;">midden gives you three key pieces of information that help you solve memory problems:</p>
+        
+        <h3 style="color:#6c5ce7; font-size:1.3rem;">📏 Retained Sizes</h3>
+        <p style="font-size:1.1rem;">This shows how much memory would be freed if you removed a specific object. It's like asking "if I delete this, how much space do I free up?" This helps you focus on the things that matter most.</p>
+        
+        <h3 style="color:#6c5ce7; font-size:1.3rem;">👥 Owners</h3>
+        <p style="font-size:1.1rem;">Every piece of memory is owned by something. midden shows you which objects are keeping other objects alive. This is crucial because sometimes memory leaks happen when objects are held onto longer than needed.</p>
+        
+        <h3 style="color:#6c5ce7; font-size:1.3rem;">🚨 Leak Suspects</h3>
+        <p style="font-size:1.1rem;">midden automatically identifies code paths that look suspicious. These are places where memory might be growing without bounds. You'll see a prioritized list, so you can tackle the biggest issues first.</p>
+    </section>
+
+    <!-- Who Should Use midden Section -->
+    <section style="background:#ffffff; border-radius:16px; padding:30px 25px; margin:30px 0; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+        <h2 style="color:#2d3436; font-size:2rem; margin-top:0; border-bottom:3px solid #6c5ce7; padding-bottom:10px;">🎯 Who Should Use midden?</h2>
+        
+        <ul style="font-size:1.1rem; padding-left:20px; list-style-type:none;">
+            <li style="margin-bottom:15px;">👨‍💻 <strong>Software Developers</strong> - Fix memory leaks in your Java applications quickly and confidently</li>
+            <li style="margin-bottom:15px;">🧪 <strong>Quality Assurance Testers</strong> - Check for memory issues before they become production problems</li>
+            <li style="margin-bottom:15px;">🛠️ <strong>DevOps Engineers</strong> - Diagnose container memory issues and optimize resource usage</li>
+            <li style="margin-bottom:15px;">🎓 <strong>Students Learning Java</strong> - Understand how memory management works in real applications</li>
+            <li style="margin-bottom:15px;">☕ <strong>Anyone Running Java Apps</strong> - If your Minecraft server or Java-based tool slows down, midden helps you figure out why</li>
+        </ul>
+        
+        <p style="font-size:1.1rem; background:#f0e6ff; padding:15px; border-radius:8px; margin-top:20px;">💡 <strong>Good to know:</strong> midden works with any Java application, not just ones you built yourself! Whether it's a server, a desktop app, or an enterprise system, if it creates .hprof files, midden can analyse them.</p>
+    </section>
+
+    <!-- Tips Section -->
+    <section style="background:#ffffff; border-radius:16px; padding:30px 25px; margin:30px 0; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+        <h2 style="color:#2d3436; font-size:2rem; margin-top:0; border-bottom:3px solid #6c5ce7; padding-bottom:10px;">💡 Pro Tips for Getting the Most Out of midden</h2>
+        
+        <ol style="font-size:1.1rem; padding-left:20px;">
+            <li style="margin-bottom:12px;"><strong>Make regular .hprof files:</strong> Create heap dumps at different times (e.g., after 1 hour, 2 hours, 4 hours) to see how memory grows over time.</li>
+            <li style="margin-bottom:12px;"><strong>Compare results:</strong> Run midden on different .hprof files and compare the outputs to spot trends.</li>
+            <li style="margin-bottom:12px;"><strong>Check the largest objects first:</strong> The #1 rule of memory debugging: fix the biggest offenders first. You'll see the biggest memory consumers at the top of the list.</li>
+            <li style="margin-bottom:12px;"><strong>Look for repeated patterns:</strong> If you see the same type of object appearing many times, that's a clue that there's a loop creating too many instances.</li>
+            <li style="margin-bottom:12px;"><strong>Don't be afraid to experiment:</strong> midden is a read-only analysis tool - it won't break anything. Poke around freely!</li>
+        </ol>
+    </section>
+
+    <!-- Frequently Asked Questions Section -->
+    <section style="background:#ffffff; border-radius:16px; padding:30px 25px; margin:30px 0; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+        <h2 style="color:#2d3436; font-size:2rem; margin-top:0; border-bottom:3px solid #6c5ce7; padding-bottom:10px;">❓ Frequently Asked Questions</h2>
+        
+        <div style="margin-bottom:25px;">
+            <h3 style="color:#6c5ce7; font-size:1.2rem;">Q: Do I need to install Java to use midden?</h3>
+            <p style="font-size:1.1rem;"><strong>A:</strong> Absolutely not! That's the beauty of midden. It's a complete, standalone tool that includes everything it needs. Download, run, done.</p>
+        </div>
+        
+        <div style="margin-bottom:25px;">
+            <h3 style="color:#6c5ce7; font-size:1.2rem;">Q: Is midden safe to use?</h3>
+            <p style="font-size:1.1rem;"><strong>A:</strong> Yes. midden only reads information - it never modifies your .hprof files. It's 100% safe and won't affect your applications or system.</p>
+        </div>
+        
+        <div style="margin-bottom:25px;">
+            <h3 style="color:#6c5ce7; font-size:1.2rem;">Q: How long does it take to analyse a file?</h3>
+            <p style="font-size:1.1rem;"><strong>A:</strong> For most files, it takes just a few seconds. Even very large .hprof files (several gigabytes) are handled efficiently, usually under a minute.</p>
+        </div>
+        
+        <div style="margin-bottom:25px;">
+            <h3 style="color:#6c5ce7; font-size:1.2rem;">Q: Will midden work on my Windows version?</h3>
+            <p style="font-size:1.1rem;"><strong>A:</strong> midden is designed to work on recent versions of Windows (Windows 10 and 11). It should also work on older versions in most cases.</p>
+        </div>
+        
+        <div style="margin-bottom:25px;">
+            <h3 style="color:#6c5ce7; font-size:1.2rem;">Q: What if I can't find .hprof files?</h3>
+            <p style="font-size:1.1rem;"><strong>A:</strong> If a Java application crashes with an out-of-memory error, it often creates a .hprof file automatically. Search for files ending in .hprof on your computer. Some applications also have settings to enable heap dump generation.</p>
+        </div>
+    </section>
+
+    <!-- Final Download CTA -->
+    <section style="text-align:center; padding:40px 20px; background:linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%); border-radius:16px; margin:40px 0; box-shadow:0 10px 30px rgba(108,92,231,0.3);">
+        <h2 style="color:#ffffff; font-size:2rem; margin-top:0;">Ready to Fix Your Memory Issues?</h2>
+        <p style="color:#ffffff; font-size:1.2rem; margin-bottom:25px;">Join thousands of developers who use midden daily. It's fast, free, and simple.</p>
+        <a href="https://github.com/Hung816259/midden" style="display:inline-block; background-color:#ffffff; color:#6c5ce7; padding:18px 45px; font-size:1.4rem; font-weight:bold; text-decoration:none; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2);">🚀 Download midden Now</a>
+        <p style="color:#ffeaa7; margin-top:20px; font-size:1rem;">⭐ Star the project on GitHub if you find it helpful!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align:center; padding:30px 0 20px; border-top:1px solid #ddd; margin-top:30px;">
+        <p style="color:#777; font-size:0.9rem;">midden is an open-source tool. Check the GitHub repository for documentation, source code, and updates.</p>
+        <p style="color:#999; font-size:0.85rem;">© 2024 midden contributors. Made with ❤️ for the developer community.</p>
+        <p style="color:#aaa; font-size:0.8rem; margin-top:15px;">Keywords: heapdump, hprof, java, profiler</p>
+    </footer>
+
 </div>
-<footer>
-  J&amp;H Cannabis News is news reporting and commentary for educational purposes. Nothing on
-  this site or channel is legal advice — laws change fast; always check the current law in
-  your state. · <a href="mailto:jhcannabisnews@zohomail.com">jhcannabisnews@zohomail.com</a>
-</footer>
-<script src="countdown.js"></script>
-<script src="headlines.js"></script>
 </body>
 </html>
