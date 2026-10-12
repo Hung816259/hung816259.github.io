@@ -42,7 +42,7 @@ async function jhLoadHeadlines() {
     if (limit) items = items.slice(0, limit);
     list.innerHTML = items.map(i =>
       `<li><a href="${jhEsc(i.url)}" target="_blank" rel="noopener">${jhEsc(i.title)}</a>` +
-      `<div class="meta">${i.tags.map(t => `<span class="tag${t === "Federal" ? " federal" : ""}">${jhEsc(t)}</span>`).join("")}` +
+      `<div class="meta">${i.tags.map(t => `<span class="chip${t === "Federal" ? " federal" : ""}">${jhEsc(t)}</span>`).join("")}` +
       `${jhEsc(i.source)} · ${jhAgo(i.published)}</div></li>`).join("") ||
       "<li>No headlines for this filter right now.</li>";
   };

@@ -76,9 +76,9 @@ nav .menu a { padding:11px 14px; }
 .headlines a { color:var(--white); text-decoration:none; font-weight:700; line-height:1.4; }
 .headlines a:hover { color:var(--purple); }
 .headlines .meta { color:var(--grey); font-size:.85rem; margin-top:6px; }
-.tag { display:inline-block; font-size:.75rem; font-weight:800; padding:2px 9px; border-radius:12px;
+.chip { display:inline-block; font-size:.75rem; font-weight:800; padding:2px 9px; border-radius:12px;
        background:#33334a; color:var(--white); margin-right:5px; }
-.tag.federal { background:var(--purple); color:#0c0c10; }
+.chip.federal { background:var(--purple); color:#0c0c10; }
 .filters { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:16px 0 22px; }
 .filters button { background:var(--panel); color:var(--grey); border:1px solid #444; border-radius:20px;
                   padding:7px 14px; font-weight:700; cursor:pointer; }
