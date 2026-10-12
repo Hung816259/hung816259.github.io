@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask James & Hope — J&H Cannabis News</title>
+<meta name="description" content="Send James & Hope your cannabis law question or a news tip. The best ones end up on the show.">
+<link rel="icon" href="logo.png"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <img src="logo.png" alt=""><span class="brand">J&amp;H CANNABIS NEWS</span>
+  <a href="index.html">Home</a>
+  <a href="episodes.html">Episodes</a>
+  <a href="states.html">States</a>
+  <a href="headlines.html">Headlines</a>
+  <details><summary class="active">More ▾</summary><div class="menu">
+    <a href="explainers.html">Explainers</a>
+    <a href="watchlist.html">Watch List</a>
+    <a href="ask.html" class="active">Ask James &amp; Hope</a>
+    <a href="about.html">About</a>
+  </div></details>
+</nav>
+<div class="wrap center">
+  <h1>🎙 Ask James &amp; Hope</h1>
+  <p class="lead">Got a question about cannabis law in your state? Saw a story we should cover?
+  Send it in. The best questions get answered on the show.</p>
+  <div class="bar"></div>
+
+  <form class="ask" id="ask-form">
+    <label for="ask-name">First name or nickname <span class="note">(optional, it's what we'd say on air)</span></label>
+    <input id="ask-name" maxlength="40" placeholder="e.g. Mike">
+
+    <label for="ask-state">Your state</label>
+    <select id="ask-state"><option value="">Choose a state…</option></select>
+
+    <label for="ask-type">What is it?</label>
+    <select id="ask-type">
+      <option>Question for the show</option>
+      <option>News tip</option>
+      <option>Correction</option>
+      <option>Business / sponsorship</option>
+    </select>
+
+    <label for="ask-q">Your question or tip</label>
+    <textarea id="ask-q" required maxlength="1500"
+      placeholder="e.g. If the federal ban hits December 11, can I still buy delta-9 gummies in my state?"></textarea>
+
+    <button class="btn" type="submit">Send to James &amp; Hope →</button>
+    <p class="note">This opens your email app with your message ready to send to
+    <strong>jhcannabisnews@zohomail.com</strong>. Please don't include your full name, address, or
+    anything you wouldn't want read on air. We can't give legal advice about your own situation.</p>
+  </form>
+
+  <h2>Other ways to reach us</h2>
+  <p class="lead">Comment on any episode on
+  <a style="color:var(--purple)" href="https://www.youtube.com/@jhcannabisnews">YouTube</a>,
+  or message us on <a style="color:var(--purple)" href="https://x.com/jhcannabisnews">X @jhcannabisnews</a>.</p>
+</div>
+<footer>
+  News reporting and commentary for educational purposes — not legal advice.
+  · <a href="mailto:jhcannabisnews@zohomail.com">jhcannabisnews@zohomail.com</a>
+</footer>
+<script>
+  const STATES = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
+    "District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky",
+    "Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana",
+    "Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota",
+    "Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas",
+    "Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming","Outside the U.S."];
+  const sel = document.getElementById("ask-state");
+  STATES.forEach(s => sel.add(new Option(s, s)));
+  document.getElementById("ask-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const name = document.getElementById("ask-name").value.trim();
+    const state = sel.value;
+    const type = document.getElementById("ask-type").value;
+    const q = document.getElementById("ask-q").value.trim();
+    const subject = `Ask James & Hope: ${type}${state ? " (" + state + ")" : ""}`;
+    const body = `${q}\n\n— ${name || "Anonymous"}${state ? ", " + state : ""}`;
+    location.href = "mailto:jhcannabisnews@zohomail.com?subject=" +
+      encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  });
+</script>
+</body>
+</html>

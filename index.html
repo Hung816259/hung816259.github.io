@@ -12,8 +12,13 @@
   <a href="index.html" class="active">Home</a>
   <a href="episodes.html">Episodes</a>
   <a href="states.html">States</a>
-  <a href="watchlist.html">Watch List</a>
-  <a href="about.html">About</a>
+  <a href="headlines.html">Headlines</a>
+  <details><summary>More ▾</summary><div class="menu">
+    <a href="explainers.html">Explainers</a>
+    <a href="watchlist.html">Watch List</a>
+    <a href="ask.html">Ask James &amp; Hope</a>
+    <a href="about.html">About</a>
+  </div></details>
 </nav>
 <div class="hero"><img src="banner-wide.png" alt="J&H Cannabis News banner"></div>
 <div class="wrap center">
@@ -26,6 +31,7 @@
   means for <strong>you</strong>.</p>
   <a class="btn" href="https://www.youtube.com/@jhcannabisnews">▶ Watch on YouTube</a>
   <a class="btn ghost" href="watchlist.html">⚖ The Watch List</a>
+  <div class="next-date" id="next-date"></div>
 
   <h2>Latest episode</h2>
   <div class="episode">
@@ -37,6 +43,10 @@
             allowfullscreen></iframe>
     <p style="margin-top:12px"><a style="color:var(--purple)" href="episodes.html">All episodes →</a></p>
   </div>
+
+  <h2>📰 Today's headlines</h2>
+  <ul class="headlines" id="headlines" data-limit="5"><li>Loading headlines…</li></ul>
+  <p><a style="color:var(--purple)" href="headlines.html">All headlines →</a></p>
 
   <h2>Why now</h2>
   <div class="cards">
@@ -50,5 +60,7 @@
   this site or channel is legal advice — laws change fast; always check the current law in
   your state. · <a href="mailto:jhcannabisnews@zohomail.com">jhcannabisnews@zohomail.com</a>
 </footer>
+<script src="countdown.js"></script>
+<script src="headlines.js"></script>
 </body>
 </html>
